@@ -1,0 +1,32 @@
+{% extends "generator/base.html" %}
+{% block title %}
+domain {{ domain.domain }}
+{% endblock %}
+{% block menu %}
+    <li><a href="{% url 'generator' %}">Generator</a></li>
+    <li><a href="{% url 'domain_list' %}">Domains</a></li>
+{% endblock %}
+{% block content %}
+<table>
+    <tr>
+        <th>Path</th>
+        <th>Title</th>
+        <th>Keywords</th>
+        <th>Description</th>
+        <th>Content</th>
+    </tr>
+    {% for webpage in webpages %}
+    <tr>
+        <td>
+            <a href="http://{{ domain.domain }}/{{ webpage.path }}">
+                /{{ webpage.path | truncatechars:20 }}
+            </a>
+        </td>
+        <td>{{ webpage.title | truncatechars:20 }}</td>
+        <td>{{ webpage.keywords | truncatechars:20 }}</td>
+        <td>{{ webpage.description | truncatechars:20 }}</td>
+        <td><pre><code>{{ webpage.content | truncatechars:50 }}</code></pre></td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

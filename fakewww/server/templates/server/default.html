@@ -1,0 +1,11 @@
+<html lang="en">
+<head>
+    <title>{{ webpage.title }}</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="Keywords" content="{{ webpage.keywords }}" />
+    <meta name="Description" content="{{ webpage.description }}" />
+</head>
+<body>
+{{ webpage.content | safe }}
+</body>
+</html>
