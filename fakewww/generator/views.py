@@ -32,7 +32,7 @@ def domain_view(request, **kwargs):
 
 
 def generator_view(request):
-    generate(3, '', 3)
+    generate(25, '', 3)
     return render_to_response(
         'generator/generator.html',
         {},

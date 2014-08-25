@@ -12,7 +12,7 @@ def crawl_webpage(url):
             'title': 'Lorem ipsum',
             'keywords': 'foo,bar,baz',
             'description': 'dolor sit amet',
-            'content': 'Lorem ipsum dolor sit amet. Si vis pacem, para bellum.'
+            'content': 'Lorem ipsum dolor sit amet. Si vis pacem, para bellum. ' * 100
         },
         'links': [
             '/wiki/A',
@@ -24,7 +24,6 @@ def crawl_webpage(url):
 def crawl_website(start_url, crawler_limit):
     urls = [start_url]
     results = []
-    print('\033[36mCrawling real websites...\033[39m')
     for i in range(crawler_limit):
         url = urls.pop()
         print('[{}/{}] {}'.format(i+1, crawler_limit, url))
