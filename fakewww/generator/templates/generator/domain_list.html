@@ -7,11 +7,20 @@ domains
     <li class="active"><a href="{% url 'domain_list' %}">Domains</a></li>
 {% endblock %}
 {% block content %}
-<ul>
+<table class="table table-condensed table-striped">
+    <tr>
+        <th>Domain</th>
+        <th>Type</th>
+    </tr>
     {% for domain in domains %}
-    <li>
-        <a href="{% url 'domain' domain=domain.domain %}">{{ domain.domain }} <small>{{ domain.type }}</small></a>
-    </li>
+    <tr>
+        <td>
+            <a href="{% url 'domain' domain=domain.domain %}">
+                {{ domain.domain }}
+            </a>
+        </td>
+        <td>{{ domain.type }}</td>
+    </tr>
     {% endfor %}
-</ul>
+</table>
 {% endblock %}

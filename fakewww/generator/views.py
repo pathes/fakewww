@@ -1,4 +1,5 @@
 from django.http import Http404
+from django.core.context_processors import csrf
 from django.shortcuts import render_to_response
 
 from server.models import Domain, Webpage
@@ -32,8 +33,15 @@ def domain_view(request, **kwargs):
 
 
 def generator_view(request):
-    generate(25, '', 3)
+    context = {}
+    context.update(csrf(request))
+    if request.method == 'POST':
+        generate(
+            50,  # domain count
+            request.POST.get('page'),  # start url
+            20  # crawl limit
+        )
     return render_to_response(
         'generator/generator.html',
-        {},
+        context,
     )

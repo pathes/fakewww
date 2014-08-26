@@ -20,10 +20,11 @@ WEBSITE_TYPES = {
         'freq_appear': 0.05,
         'pages': 40,
         'links': 10,
-        'paragraph_size': 100,
+        'paragraph_size': 40,
         'freq_link': {
             'self': 0.5,
-            'big': 0.3,
+            'big': 0.25,
+            'linking': 0.05,
             'specialist': 0.18,
             'evil': 0.01,
             'minion': 0.01,
@@ -33,10 +34,11 @@ WEBSITE_TYPES = {
         'freq_appear': 0.3,
         'pages': 5,
         'links': 6,
-        'paragraph_size': 40,
+        'paragraph_size': 20,
         'freq_link': {
             'self': 0.4,
-            'big': 0.4,
+            'big': 0.35,
+            'linking': 0.05,
             'specialist': 0.18,
             'evil': 0.01,
             'minion': 0.01,
@@ -46,10 +48,11 @@ WEBSITE_TYPES = {
         'freq_appear': 0.1,
         'pages': 10,
         'links': 6,
-        'paragraph_size': 100,
+        'paragraph_size': 40,
         'freq_link': {
             'self': 0.7,
-            'big': 0.15,
+            'big': 0.1,
+            'linking': 0.05,
             'specialist': 0.15,
             'evil': 0.0,
             'minion': 0.0,
@@ -59,10 +62,11 @@ WEBSITE_TYPES = {
         'freq_appear': 0.1,
         'pages': 5,
         'links': 3,
-        'paragraph_size': 200,
+        'paragraph_size': 60,
         'freq_link': {
             'self': 0.9,
             'big': 0.0,
+            'linking': 0.0,
             'specialist': 0.0,
             'evil': 0.0,
             'minion': 0.1,
@@ -76,9 +80,10 @@ WEBSITE_TYPES = {
         'freq_link': {
             'self': 0.1,
             'big': 0.0,
+            'linking': 0.0,
             'specialist': 0.0,
-            'evil': 0.0,
-            'minion': 0.9,
+            'evil': 0.9,
+            'minion': 0.0,
         },
     },
 }
@@ -225,7 +230,6 @@ def create_html_content(domains, websites):
             links_left = int(WEBSITE_TYPES[domain.type]['links'])
             # Generate paragraphs each with random number of links.
             while links_left > 0:
-                print(links_left)
                 webpage.content += '<h2>{}</h2>'.format(random_word_sequence(words, random.randint(5, 10)))
                 webpage.content += random_word_sequence(words, paragraph_size - paragraph_deviation + random.randint(0, 2*paragraph_deviation))
                 links_in_paragraph = min(random.randint(1, 5), links_left)

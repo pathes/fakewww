@@ -7,7 +7,7 @@ domain {{ domain.domain }}
     <li><a href="{% url 'domain_list' %}">Domains</a></li>
 {% endblock %}
 {% block content %}
-<table>
+<table class="table table-condensed table-striped">
     <tr>
         <th>Path</th>
         <th>Title</th>
@@ -19,13 +19,13 @@ domain {{ domain.domain }}
     <tr>
         <td>
             <a href="http://{{ domain.domain }}/{{ webpage.path }}">
-                /{{ webpage.path | truncatechars:20 }}
+                /{{ webpage.path | truncatechars:30 }}
             </a>
         </td>
         <td>{{ webpage.title | truncatechars:20 }}</td>
         <td>{{ webpage.keywords | truncatechars:20 }}</td>
         <td>{{ webpage.description | truncatechars:20 }}</td>
-        <td><pre><code>{{ webpage.content | truncatechars:50 }}</code></pre></td>
+        <td><pre><code>{{ webpage.content | truncatechars:200 }}</code></pre></td>
     </tr>
     {% endfor %}
 </table>
